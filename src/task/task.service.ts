@@ -1,15 +1,8 @@
 import { Injectable } from '@nestjs/common';
-// import { Model } from 'mongoose';
 import Task from './task.type';
-// import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class TaskService {
-  // constructor(
-  //   @InjectModel(Task.name)
-  //   private readonly taskModel: Model<Task>,
-  // ) {}
-
   tasks: Task[] = [
     {
       id: 1,
@@ -32,22 +25,6 @@ export class TaskService {
       completed: false,
     },
   ];
-
-  // getAllTasks() {
-  //   return this.taskModel.find();
-  // }
-
-  // createTask(task: TaskDocument) {
-  //   return this.taskModel.create(task);
-  // }
-
-  // updateTask(id: string, task: TaskDocument) {
-  //   return this.taskModel.updateOne({ _id: id }, task);
-  // }
-
-  // deleteTask(id: string) {
-  //   return this.taskModel.deleteOne({ _id: id });
-  // }
 
   getAllTasks() {
     return this.tasks;
