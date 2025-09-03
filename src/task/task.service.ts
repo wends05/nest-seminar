@@ -40,15 +40,24 @@ export class TaskService {
   }
 
   updateTask(id: number, task: Task) {
+    console.log(this.tasks);
+    const currentTask = this.tasks[id - 1];
+
+    if (!currentTask) {
+      throw new Error('Task not found');
+    }
+
     const updatedTask = {
+      ...currentTask,
       ...task,
-      id,
     };
-    this.tasks[id] = updatedTask;
+    this.tasks.splice(id - 1, 1, updatedTask);
     return updatedTask;
   }
 
   deleteTask(id: number) {
-    return this.tasks.splice(id, 1);
+    const deletedTask = this.tasks[id - 1];
+    this.tasks.splice(id - 1, 1);
+    return deletedTask;
   }
 }
